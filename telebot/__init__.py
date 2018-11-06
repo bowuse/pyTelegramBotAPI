@@ -690,7 +690,7 @@ class TeleBot:
         """
         Use this method to send .webp stickers.
         :param chat_id:
-        :param data:
+        :param sticker:
         :param reply_to_message_id:
         :param reply_markup:
         :return: API reply.
