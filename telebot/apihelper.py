@@ -262,6 +262,20 @@ def send_photo(token, chat_id, photo, caption=None, reply_to_message_id=None, re
     return _make_request(token, method_url, params=payload, files=files, method='post')
 
 
+def send_sticker(token, chat_id, sticker, disable_notification=None, reply_to_message_id=None,
+                 reply_markup=None):
+    method_url = r'sendSticker'
+    payload = {'chat_id': chat_id, 'sticker': sticker}
+    if reply_to_message_id:
+        payload['reply_to_message_id'] = reply_to_message_id
+    if reply_markup:
+        payload['reply_markup'] = _convert_markup(reply_markup)
+    if disable_notification:
+        payload['disable_notification'] = disable_notification
+    return _make_request(token, method_url, params=payload, method='post')
+    
+
+
 def send_media_group(token, chat_id, media, disable_notification=None, reply_to_message_id=None):
     method_url = r'sendMediaGroup'
     media_json, files = _convert_input_media_array(media)
