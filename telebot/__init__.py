@@ -686,8 +686,7 @@ class TeleBot:
             apihelper.send_data(self.token, chat_id, data, 'document', reply_to_message_id, reply_markup,
                                 parse_mode, disable_notification, timeout, caption=caption))
 
-    def send_sticker(self, chat_id, data, reply_to_message_id=None, reply_markup=None, disable_notification=None,
-                     timeout=None):
+    def send_sticker(self, chat_id, sticker, reply_to_message_id=None, reply_markup=None, disable_notification=None):
         """
         Use this method to send .webp stickers.
         :param chat_id:
@@ -697,8 +696,8 @@ class TeleBot:
         :return: API reply.
         """
         return types.Message.de_json(
-            apihelper.send_data(self.token, chat_id, data, 'sticker', reply_to_message_id, reply_markup,
-                                disable_notification, timeout))
+            apihelper.send_sticker(self.token, chat_id, sticker, reply_to_message_id, reply_markup,
+                                disable_notification))
 
     def send_video(self, chat_id, data, duration=None, caption=None, reply_to_message_id=None, reply_markup=None,
                    parse_mode=None, supports_streaming=None, disable_notification=None, timeout=None):
